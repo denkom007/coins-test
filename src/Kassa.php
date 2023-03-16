@@ -99,8 +99,12 @@ final class Kassa implements KassaInterface
         arsort($coins);
         
         foreach ($coins as $coin) {
-            $this->coinsFlowOut[$coin] = floor($refund / $coin);
-            $refund -= $this->coinsFlowOut[$coin] * $coin;
+            $math = floor($refund / $coin);
+            
+            if ($math != 0) {
+                $this->coinsFlowOut[$coin] = floor($refund / $coin);
+                $refund -= $this->coinsFlowOut[$coin] * $coin;
+            }
         }
         
         $finalSum = array_sum(array_values($this->coinsFlowOut));
