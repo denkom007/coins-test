@@ -2,8 +2,6 @@
 
 namespace src;
 
-require_once __DIR__ . '/Autoload.php';
-
 final class Kassa implements KassaInterface
 {
     private array $coins = [0.10, 0.50, 1, 2, 5, 10];
